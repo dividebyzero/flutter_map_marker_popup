@@ -6,32 +6,32 @@ import 'oval_bounds.dart';
 abstract class PopupCalculations {
   /// The X offset to the center of the marker from the marker's point.
   static double centerOffsetX(PopupSpec popupSpec) {
-    return -(popupSpec.markerWidth / 2 - popupSpec.markerAnchor.left);
+    return -(popupSpec.markerWidth / 2 - rightOffsetX(popupSpec));
   }
 
   /// The X offset to the left edge of the marker from the marker's point.
   static double leftOffsetX(PopupSpec popupSpec) {
-    return -(popupSpec.markerWidth - popupSpec.markerAnchor.left);
+    return -(popupSpec.markerWidth - rightOffsetX(popupSpec));
   }
 
   /// The X offset to the right edge of the marker from the marker's point.
   static double rightOffsetX(PopupSpec popupSpec) {
-    return popupSpec.markerAnchor.left;
+    return popupSpec.markerAnchor?.anchor?.left ?? 0;
   }
 
   /// The Y offset to the center of the marker from the marker's point.
   static double centerOffsetY(PopupSpec popupSpec) {
-    return -(popupSpec.markerHeight / 2 - popupSpec.markerAnchor.top);
+    return -(popupSpec.markerHeight / 2 - bottomOffsetY(popupSpec));
   }
 
   /// The Y offset to the top edge of the marker from the marker's point.
   static double topOffsetY(PopupSpec popupSpec) {
-    return -(popupSpec.markerHeight - popupSpec.markerAnchor.top);
+    return -(popupSpec.markerHeight - bottomOffsetY(popupSpec));
   }
 
   /// The Y offset to the bottom edge of the marker from the marker's point.
   static double bottomOffsetY(PopupSpec popupSpec) {
-    return popupSpec.markerAnchor.top;
+    return popupSpec.markerAnchor?.anchor?.top??0;
   }
 
   /// The distance from the [marker] center to the horizontal bounds at a given

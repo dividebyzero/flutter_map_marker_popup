@@ -196,13 +196,24 @@ abstract class PopupContainerTransform {
     )..rotateZ(-mapState.rotationRad);
   }
 
+  /*
+     /// Create new [CustomPoint] with [x] and [y] multiplied by [n]
+  CustomPoint multiplyBy(num n) {
+    return CustomPoint(x * n, y * n);
+  }
+   */
   static CustomPoint<num> _markerPoint(
     FlutterMapState mapState,
     PopupSpec popupSpec,
   ) {
-    return mapState
-            .project(popupSpec.markerPoint)
-            .multiplyBy(mapState.getZoomScale(mapState.zoom, mapState.zoom)) -
-        mapState.pixelOrigin;
+    var zoomSCale = mapState.getZoomScale(mapState.zoom, mapState.zoom);
+
+    CustomPoint<num> point =mapState.project(popupSpec.markerPoint);
+    var x = point.x;
+    var y = point.y;
+    x *= zoomSCale;
+    y *= zoomSCale;
+    point = CustomPoint(x, y);
+    return point - mapState.pixelOrigin;
   }
 }

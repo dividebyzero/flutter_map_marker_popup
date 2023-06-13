@@ -29,7 +29,7 @@ class PopupSpec {
 
   /// Override the marker's anchor. This will only affect popup placement when
   /// using a marker snap.
-  final Anchor? markerAnchorOverride;
+  final AnchorPos? markerAnchorOverride;
 
   PopupSpec({
     required this.marker,
@@ -49,6 +49,7 @@ class PopupSpec {
         namespace = null,
         markerPointOverride = null,
         markerRotateAlignmentOveride = null,
+
         removeMarkerRotateOrigin = false,
         markerAnchorOverride = null;
 
@@ -74,7 +75,7 @@ class PopupSpec {
 
   LatLng get markerPoint => markerPointOverride ?? marker.point;
 
-  Anchor get markerAnchor => markerAnchorOverride ?? marker.anchor;
+  AnchorPos? get markerAnchor => markerAnchorOverride ?? marker.anchorPos;
 
   ////////////////////////////
   /// Marker method proxies //

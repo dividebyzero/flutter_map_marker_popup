@@ -14,3 +14,4 @@ export 'src/popup_spec.dart';
 export 'src/state/inherit_or_create_popup_scope.dart';
 export 'src/state/popup_scope.dart';
 export 'src/state/popup_state.dart';
+export 'src/state/popup_state_impl.dart';

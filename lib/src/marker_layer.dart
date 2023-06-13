@@ -77,8 +77,16 @@ class _MarkerLayerState extends State<MarkerLayer>
         _pxCache[i] = pxPoint;
       }
 
-      final width = marker.width - marker.anchor.left;
-      final height = marker.height - marker.anchor.top;
+      //try to guess some defaults if anchor is null.
+      //FIXME could also try to use anchorpos.anchoralign
+      var anchorleft = marker.width*2;
+      var anchortop = marker.height*2;
+      if(marker.anchorPos!=null && marker.anchorPos?.anchor!=null){
+        anchorleft = marker.anchorPos?.anchor?.left ?? anchorleft;
+        anchortop = marker.anchorPos?.anchor?.top ?? anchortop;
+      }
+      final width = marker.width - anchorleft;
+      final height = marker.height - anchortop;
       var sw = CustomPoint(pxPoint.x + width, pxPoint.y - height);
       var ne = CustomPoint(pxPoint.x - width, pxPoint.y + height);
 
